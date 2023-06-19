@@ -1,11 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using OnionAPI.Application.Abstraction;
-using OnionAPI.Persistence.Concretes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using OnionAPI.Persistence.Contexts;
 
 namespace OnionAPI.Persistence
 {
@@ -13,7 +9,8 @@ namespace OnionAPI.Persistence
     {
         public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddSingleton<IProductService, ProductService>();
+
+            services.AddDbContext<OnionAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
         }
     }
 }
