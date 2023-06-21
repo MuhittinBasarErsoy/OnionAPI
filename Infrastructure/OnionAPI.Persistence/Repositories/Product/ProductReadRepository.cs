@@ -1,0 +1,18 @@
+﻿using OnionAPI.Application.Repositories;
+using OnionAPI.Domain.Entities;
+using OnionAPI.Persistence.Contexts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OnionAPI.Persistence.Repositories
+{
+    public class ProductReadRepository : ReadRepository<Product>, IProductReadRepository
+    {
+        public ProductReadRepository(OnionAPIDbContext context) : base(context)
+        {
+        }
+    }
+}
