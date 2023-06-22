@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OnionAPI.Application.Repositories;
+using OnionAPI.Application.UnitOfWork;
 using OnionAPI.Persistence.Contexts;
 using OnionAPI.Persistence.Repositories;
 
@@ -15,6 +16,7 @@ namespace OnionAPI.Persistence
             services.AddDbContext<OnionAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
             services.AddScoped<IProductReadRepository, ProductReadRepository>();
             services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
     }
 }

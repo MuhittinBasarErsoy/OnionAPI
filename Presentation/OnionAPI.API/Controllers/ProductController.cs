@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using OnionAPI.Application.Repositories;
+using OnionAPI.Application.UnitOfWork;
 using OnionAPI.Domain.Entities;
 
 namespace OnionAPI.API.Controllers
@@ -11,13 +12,11 @@ namespace OnionAPI.API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        readonly private IProductWriteRepository _productWriteRepository;
-        readonly private IProductReadRepository _productReadRepository;
+        IUnitOfWork _unitOfWork;
 
-        public ProductController(IProductWriteRepository productWriteRepository, IProductReadRepository productReadRepository)
+        public ProductController(IUnitOfWork unitOfWork)
         {
-            _productWriteRepository = productWriteRepository;
-            _productReadRepository = productReadRepository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet(Name = "Save")]
@@ -30,14 +29,16 @@ namespace OnionAPI.API.Controllers
                 new Product{ Id=Guid.NewGuid(), CreatedDate=DateTime.UtcNow, Name="üç", Price=1, Stock=1},
                 new Product{ Id=Guid.NewGuid(), CreatedDate=DateTime.UtcNow, Name="dört", Price=1, Stock=1}
             };
-            _productWriteRepository.AddRangeAsync(lstProducts);
-            _productWriteRepository.SaveAsync();
+
+            _unitOfWork.ProductWriteRepository.AddRangeAsync(lstProducts);
+
+            _unitOfWork.Save();
         }
 
         [HttpGet(Name = "Get")]
         public IActionResult Get()
         {
-            var products = _productReadRepository.GetAll();
+            var products = _unitOfWork.ProductReadRepository.GetAll();
             return Ok(products);
         }
 
