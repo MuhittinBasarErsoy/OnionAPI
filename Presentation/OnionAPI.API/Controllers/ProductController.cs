@@ -13,10 +13,12 @@ namespace OnionAPI.API.Controllers
     public class ProductController : ControllerBase
     {
         IUnitOfWork _unitOfWork;
+        Serilog.ILogger _logger;
 
-        public ProductController(IUnitOfWork unitOfWork)
+        public ProductController(IUnitOfWork unitOfWork, Serilog.ILogger logger)
         {
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
         [HttpGet(Name = "Save")]
@@ -38,6 +40,7 @@ namespace OnionAPI.API.Controllers
         [HttpGet(Name = "Get")]
         public IActionResult Get()
         {
+            _logger.Information("Deneme");
             var products = _unitOfWork.ProductReadRepository.GetAll();
             return Ok(products);
         }
