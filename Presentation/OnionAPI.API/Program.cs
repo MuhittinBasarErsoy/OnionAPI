@@ -1,3 +1,4 @@
+using OnionAPI.API.Extensions;
 using OnionAPI.Persistence;
 using Serilog;
 using Serilog.Core;
@@ -29,6 +30,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
 
 app.UseHttpsRedirection();
 

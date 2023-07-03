@@ -40,7 +40,6 @@ namespace OnionAPI.API.Controllers
         [HttpGet(Name = "Get")]
         public IActionResult Get()
         {
-            _logger.Information("Deneme");
             var products = _unitOfWork.ProductReadRepository.GetAll();
             return Ok(products);
         }
