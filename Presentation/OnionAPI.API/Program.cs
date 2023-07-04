@@ -31,7 +31,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
+app.ConfigureExceptionHandler(log);
 
 app.UseHttpsRedirection();
 

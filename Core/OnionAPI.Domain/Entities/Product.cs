@@ -14,4 +14,5 @@ namespace OnionAPI.Domain.Entities
         public long Price { get; set; }
         public ICollection<Order> Orders { get; set; }
     }
+
 }
