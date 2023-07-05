@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using OnionAPI.Application.DTOs;
@@ -15,21 +16,18 @@ namespace OnionAPI.API.Controllers
     {
         IUnitOfWork _unitOfWork;
         Serilog.ILogger _logger;
+        private readonly IMapper _mapper;
 
-        public ProductController(IUnitOfWork unitOfWork, Serilog.ILogger logger)
+        public ProductController(IUnitOfWork unitOfWork, Serilog.ILogger logger,IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
+            _mapper = mapper;
         }
 
         [HttpPost(Name = "Save")]
         public async void Save(CreateProductDTO createProductDTO)
         {
-            if(ModelState.IsValid)
-            {
-
-            }
-
             List<Product> lstProducts = new List<Product>
             {
                 new Product{ Id=Guid.NewGuid(), CreatedDate=DateTime.UtcNow, Name="bir", Price=1, Stock=1},
@@ -47,7 +45,8 @@ namespace OnionAPI.API.Controllers
         public IActionResult Get()
         {
             var products = _unitOfWork.ProductReadRepository.GetAll();
-            return Ok(products);
+            var mapped = _mapper.Map<List<CreateProductDTO>>(products);    
+            return Ok(mapped);
         }
 
     }

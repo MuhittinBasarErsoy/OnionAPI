@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OnionAPI.Application.Validators.Products
 {
-    public class CreateProductValidator: AbstractValidator<CreateProductDTO>
+    public class CreateProductValidator: AbstractValidator<CreateProductDTO> 
     {
         public CreateProductValidator()
         {

@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using OnionAPI.API.Extensions;
+using OnionAPI.Application;
 using OnionAPI.Application.Validators.Products;
 using OnionAPI.Infrastructure.Filters;
 using OnionAPI.Persistence;
@@ -12,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddPersistenceServices();
+builder.Services.AddApplicationServices();
 builder.Services.AddControllers(opt=>opt.Filters.Add<ValidationFilter>()).AddFluentValidation(conf=>conf.RegisterValidatorsFromAssemblyContaining<CreateProductValidator>()).ConfigureApiBehaviorOptions(opt=>opt.SuppressModelStateInvalidFilter =true);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
