@@ -12,6 +12,8 @@ namespace OnionAPI.Application.UnitOfWork
     {
         IProductReadRepository ProductReadRepository { get; }
         IProductWriteRepository ProductWriteRepository { get; }
+        IMudurlukReadRepository MudurlukReadRepository { get; }
+        IMudurlukWriteRepository MudurlukWriteRepository { get; }
         int Save();
     }
 }

@@ -1,7 +1,6 @@
 ﻿using OnionAPI.Application.Repositories;
 using OnionAPI.Domain.Entities;
 using OnionAPI.Persistence.Contexts;
-using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace OnionAPI.Persistence.Repositories
 {
-    public class ProductReadRepository : ReadRepository<Product>, IProductReadRepository
+    public class MudurlukWriteRepository : WriteRepository<Mudurluk>, IMudurlukWriteRepository
     {
-        public ProductReadRepository(OnionAPIDbContext context, IDatabase cacheRepository) : base(context, cacheRepository)
+        public MudurlukWriteRepository(OnionAPIDbContext context) : base(context)
         {
         }
     }

@@ -4,10 +4,12 @@ using OnionAPI.Application;
 using OnionAPI.Application.Validators.Products;
 using OnionAPI.Infrastructure.Filters;
 using OnionAPI.Persistence;
+using OnionAPI.Persistence.Redis;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Sinks.MSSqlServer;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,22 @@ builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddControllers(opt=>opt.Filters.Add<ValidationFilter>()).AddFluentValidation(conf=>conf.RegisterValidatorsFromAssemblyContaining<CreateProductValidator>()).ConfigureApiBehaviorOptions(opt=>opt.SuppressModelStateInvalidFilter =true);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddSingleton<RedisService>(sp =>
+{
+
+    return new RedisService(builder.Configuration["CacheOptions:Url"]);
+});
+
+builder.Services.AddSingleton<IDatabase>(sp =>
+{
+    var redisService = sp.GetRequiredService<RedisService>();
+
+    return redisService.GetDb(0);
+
+});
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 Logger log = new LoggerConfiguration()

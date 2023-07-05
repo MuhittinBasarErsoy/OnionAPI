@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace OnionAPI.Persistence.Repositories
 {
-    public class ProductReadRepository : ReadRepository<Product>, IProductReadRepository
+    public class MudurlukReadRepository : ReadRepository<Mudurluk>, IMudurlukReadRepository
     {
-        public ProductReadRepository(OnionAPIDbContext context, IDatabase cacheRepository) : base(context, cacheRepository)
+        public MudurlukReadRepository(OnionAPIDbContext context, IDatabase cacheRepository) : base(context, cacheRepository)
         {
         }
     }

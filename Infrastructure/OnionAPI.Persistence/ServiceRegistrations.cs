@@ -16,6 +16,9 @@ namespace OnionAPI.Persistence
             services.AddDbContext<OnionAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
             services.AddScoped<IProductReadRepository, ProductReadRepository>();
             services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
+            services.AddScoped<IMudurlukWriteRepository, MudurlukWriteRepository>();
+            services.AddScoped<IMudurlukReadRepository, MudurlukReadRepository>();
+
             services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
     }

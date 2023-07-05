@@ -18,12 +18,17 @@ namespace OnionAPI.Persistence.Repositories
 
         public IProductReadRepository ProductReadRepository { get; }
         public IProductWriteRepository ProductWriteRepository { get; }
+        public IMudurlukReadRepository MudurlukReadRepository { get; }
+        public IMudurlukWriteRepository MudurlukWriteRepository { get; }
 
-        public UnitOfWork(OnionAPIDbContext context, IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository)
+        public UnitOfWork(OnionAPIDbContext context, IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository
+            , IMudurlukWriteRepository mudurlukWriteRepository, IMudurlukReadRepository mudurlukReadRepository)
         {
             _context = context;
             ProductReadRepository = productReadRepository;
             ProductWriteRepository = productWriteRepository;
+            MudurlukWriteRepository = mudurlukWriteRepository;
+            MudurlukReadRepository = mudurlukReadRepository;
         }
 
         public int Save()

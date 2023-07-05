@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace OnionAPI.Application.AutoMapper
 {
-    public class ProductProfile : Profile
+    public class Profiles : Profile
     {
-        public ProductProfile()
+        public Profiles()
         {
             CreateMap<CreateProductDTO,Product>().ReverseMap();
+            CreateMap<MudurlukDTO, Mudurluk>().ReverseMap();
         }
     }
 }
