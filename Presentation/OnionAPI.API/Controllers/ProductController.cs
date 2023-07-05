@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using OnionAPI.Application.DTOs;
 using OnionAPI.Application.Repositories;
 using OnionAPI.Application.UnitOfWork;
 using OnionAPI.Domain.Entities;
@@ -21,9 +22,14 @@ namespace OnionAPI.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "Save")]
-        public async void Save()
+        [HttpPost(Name = "Save")]
+        public async void Save(CreateProductDTO createProductDTO)
         {
+            if(ModelState.IsValid)
+            {
+
+            }
+
             List<Product> lstProducts = new List<Product>
             {
                 new Product{ Id=Guid.NewGuid(), CreatedDate=DateTime.UtcNow, Name="bir", Price=1, Stock=1},
