@@ -84,7 +84,8 @@ namespace OnionAPI.Persistence.Repositories
 
             items.ForEach(p =>
             {
-                _cacheRepository.HashSetAsync(itemKey, p.Id.ToString(), JsonSerializer.Serialize(p));
+                _cacheRepository.HashSet(itemKey, p.Id.ToString(), JsonSerializer.Serialize(p));
+                _cacheRepository.KeyExpire(itemKey, new TimeSpan(0, 0, 180));
 
             });
 

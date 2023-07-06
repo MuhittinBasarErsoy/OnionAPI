@@ -26,11 +26,10 @@ namespace OnionAPI.API.Controllers
             _logger = logger;
             _mapper = mapper;
             _database = database;
-            _database.StringSet("basar", "ersoy");
         }
 
 
-        [HttpGet, Route("[controller]/Get")]
+        [HttpGet("Get")]
         public IActionResult Get()
         {
             var mudurlukler = _unitOfWork.MudurlukReadRepository.GetAllFromCache();

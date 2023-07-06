@@ -41,7 +41,7 @@ namespace OnionAPI.API.Controllers
             _unitOfWork.Save();
         }
 
-        [HttpGet, Route("[controller]/Get")]
+        [HttpGet("Get")]
         public IActionResult Get()
         {
             var products = _unitOfWork.ProductReadRepository.GetAll();
