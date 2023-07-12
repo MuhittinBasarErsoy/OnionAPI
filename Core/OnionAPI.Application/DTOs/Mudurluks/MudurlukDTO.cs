@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionAPI.Application.DTOs
+namespace OnionAPI.Application.DTOs.Mudurluks
 {
     public class MudurlukDTO
     {

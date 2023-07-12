@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using OnionAPI.Application.DTOs;
+using OnionAPI.Application.DTOs.Mudurluks;
 using OnionAPI.Application.DTOs.Products;
 using OnionAPI.Application.Features.Commands.CreateProduct;
 using OnionAPI.Domain.Entities;
@@ -15,7 +15,6 @@ namespace OnionAPI.Application.AutoMapper
     {
         public Profiles()
         {
-            CreateMap<CreateProductDTO,Product>().ReverseMap();
             CreateMap<CreateProductCommandRequest, Product>().ReverseMap();
             CreateMap<ProductDTO, Product>().ReverseMap();
             CreateMap<MudurlukDTO, Mudurluk>().ReverseMap();

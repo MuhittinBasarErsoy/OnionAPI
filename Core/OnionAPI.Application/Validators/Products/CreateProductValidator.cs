@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using OnionAPI.Application.DTOs;
+using OnionAPI.Application.Features.Commands.CreateProduct;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OnionAPI.Application.Validators.Products
 {
-    public class CreateProductValidator: AbstractValidator<CreateProductDTO> 
+    public class CreateProductValidator: AbstractValidator<CreateProductCommandRequest> 
     {
         public CreateProductValidator()
         {
