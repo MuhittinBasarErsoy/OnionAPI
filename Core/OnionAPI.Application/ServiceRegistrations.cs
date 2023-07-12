@@ -16,6 +16,7 @@ namespace OnionAPI.Application
         {
             var assembly = Assembly.GetExecutingAssembly();
             services.AddAutoMapper(assembly);
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
         }
     }
 }

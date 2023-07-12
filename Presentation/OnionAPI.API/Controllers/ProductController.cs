@@ -1,11 +1,15 @@
 ﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using OnionAPI.Application.DTOs;
+using OnionAPI.Application.Features.Commands.CreateProduct;
+using OnionAPI.Application.Features.Queries.GetAllProduct;
 using OnionAPI.Application.Repositories;
 using OnionAPI.Application.UnitOfWork;
 using OnionAPI.Domain.Entities;
+using System.Net;
 
 namespace OnionAPI.API.Controllers
 {
@@ -16,37 +20,27 @@ namespace OnionAPI.API.Controllers
     {
         IUnitOfWork _unitOfWork;
         Serilog.ILogger _logger;
-        private readonly IMapper _mapper;
+        IMediator _mediator;
 
-        public ProductController(IUnitOfWork unitOfWork, Serilog.ILogger logger,IMapper mapper)
+        public ProductController(IUnitOfWork unitOfWork, Serilog.ILogger logger, IMediator mediator)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
-            _mapper = mapper;
+            _mediator = mediator;
         }
 
         [HttpPost(Name = "Save")]
-        public async void Save(CreateProductDTO createProductDTO)
+        public async Task<IActionResult> Post(CreateProductCommandRequest createProductCommandRequest)
         {
-            List<Product> lstProducts = new List<Product>
-            {
-                new Product{ Id=Guid.NewGuid(), CreatedDate=DateTime.UtcNow, Name="bir", Price=1, Stock=1},
-                new Product{ Id=Guid.NewGuid(), CreatedDate=DateTime.UtcNow, Name="iki", Price=1, Stock=1},
-                new Product{ Id=Guid.NewGuid(), CreatedDate=DateTime.UtcNow, Name="üç", Price=1, Stock=1},
-                new Product{ Id=Guid.NewGuid(), CreatedDate=DateTime.UtcNow, Name="dört", Price=1, Stock=1}
-            };
-
-            _unitOfWork.ProductWriteRepository.AddRangeAsync(lstProducts);
-
-            _unitOfWork.Save();
+            CreateProductCommandResponse response = await _mediator.Send(createProductCommandRequest);
+            return StatusCode((int)HttpStatusCode.Created);
         }
 
         [HttpGet("Get")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
         {
-            var products = _unitOfWork.ProductReadRepository.GetAll();
-            var mapped = _mapper.Map<List<CreateProductDTO>>(products);    
-            return Ok(mapped);
+            GetAllProductQueryResponse response = await _mediator.Send(getAllProductQueryRequest);
+            return Ok(response);
         }
 
     }
