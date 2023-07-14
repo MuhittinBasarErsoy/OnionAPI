@@ -1,7 +1,10 @@
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using OnionAPI.API.Extensions;
 using OnionAPI.Application;
 using OnionAPI.Application.Validators.Products;
+using OnionAPI.Infrastructure;
 using OnionAPI.Infrastructure.Filters;
 using OnionAPI.Persistence;
 using OnionAPI.Persistence.Redis;
@@ -10,12 +13,15 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Sinks.MSSqlServer;
 using StackExchange.Redis;
+using System.Security.Claims;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices();
 builder.Services.AddControllers(opt=>opt.Filters.Add<ValidationFilter>()).AddFluentValidation(conf=>conf.RegisterValidatorsFromAssemblyContaining<CreateProductValidator>()).ConfigureApiBehaviorOptions(opt=>opt.SuppressModelStateInvalidFilter =true);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
@@ -45,6 +51,27 @@ Logger log = new LoggerConfiguration()
 builder.Host.UseSerilog(log);
 
 
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer("GenelMudur", options =>
+    {
+        options.TokenValidationParameters = new()
+        {
+            ValidateAudience = true,
+            ValidateIssuer = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+
+            ValidAudience = builder.Configuration["Token:Audience"],
+            ValidIssuer = builder.Configuration["Token:Issuer"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"])),
+            LifetimeValidator = (notBefore, expires, securityToken, validationParameters) => expires != null ? expires > DateTime.UtcNow : false,
+
+            NameClaimType = ClaimTypes.Name
+        };
+    }
+    );
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -58,6 +85,7 @@ app.ConfigureExceptionHandler(log);
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

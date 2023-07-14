@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -16,6 +17,7 @@ namespace OnionAPI.API.Controllers
 
     [Route("api/[controller]/[action]")]
     [ApiController]
+
     public class ProductController : ControllerBase
     {
         IUnitOfWork _unitOfWork;
@@ -37,6 +39,7 @@ namespace OnionAPI.API.Controllers
         }
 
         [HttpGet("Get")]
+        [Authorize(AuthenticationSchemes = "GenelMudur")]
         public async Task<IActionResult> Get([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
         {
             GetAllProductQueryResponse response = await _mediator.Send(getAllProductQueryRequest);
