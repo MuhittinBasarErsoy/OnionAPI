@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using OnionAPI.Application.DTOs.Mudurluks;
 using OnionAPI.Application.DTOs.Products;
-using OnionAPI.Application.Features.Commands.AppUser;
+using OnionAPI.Application.Features.Commands.AppUser.CreateUser;
 using OnionAPI.Application.Features.Commands.Product.CreateProduct;
 using OnionAPI.Domain.Entities;
 using OnionAPI.Domain.Entities.Identity;

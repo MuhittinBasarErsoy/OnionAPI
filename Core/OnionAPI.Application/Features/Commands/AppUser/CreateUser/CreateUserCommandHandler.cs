@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionAPI.Application.Features.Commands.AppUser
+namespace OnionAPI.Application.Features.Commands.AppUser.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommandRequest, CreateUserCommandResponse>
     {
@@ -25,8 +25,9 @@ namespace OnionAPI.Application.Features.Commands.AppUser
         {
             var user = _mapper.Map<Domain.Entities.Identity.AppUser>(request);
             user.Id = Guid.NewGuid().ToString();
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, request.PasswordHash);
             IdentityResult result = await _userManager.CreateAsync(user);
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 return new()
                 {
