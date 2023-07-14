@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionAPI.Application.Features.Queries.GetAllMudurluk
+namespace OnionAPI.Application.Features.Queries.Mudurluk.GetAllMudurluk
 {
     public class GetAllMudurlukQueryRequest : IRequest<GetAllMudurlukQueryResponse>
     {

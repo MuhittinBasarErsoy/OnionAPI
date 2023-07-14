@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionAPI.Application.Features.Commands.CreateProduct
+namespace OnionAPI.Application.Features.Commands.Product.CreateProduct
 {
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, CreateProductCommandResponse>
     {
@@ -23,7 +23,7 @@ namespace OnionAPI.Application.Features.Commands.CreateProduct
         }
         public async Task<CreateProductCommandResponse> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
-            var product = _mapper.Map<Product>(request);
+            var product = _mapper.Map<Domain.Entities.Product>(request);
             await _unitOfWork.ProductWriteRepository.AddAsync(product);
             _unitOfWork.Save();
             return new();

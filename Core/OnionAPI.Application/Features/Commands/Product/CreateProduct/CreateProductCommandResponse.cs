@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionAPI.Application.Features.Commands.CreateProduct
+namespace OnionAPI.Application.Features.Commands.Product.CreateProduct
 {
     public class CreateProductCommandResponse
     {

@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Abstraction\" />
+    <Folder Include="Features\Queries\AppUser\" />
   </ItemGroup>
 
   <ItemGroup>

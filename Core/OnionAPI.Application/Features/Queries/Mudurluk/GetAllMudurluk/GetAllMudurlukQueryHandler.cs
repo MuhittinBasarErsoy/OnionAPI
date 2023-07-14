@@ -3,7 +3,7 @@ using MediatR;
 using OnionAPI.Application.DTOs.Mudurluks;
 using OnionAPI.Application.UnitOfWork;
 
-namespace OnionAPI.Application.Features.Queries.GetAllMudurluk
+namespace OnionAPI.Application.Features.Queries.Mudurluk.GetAllMudurluk
 {
     internal class GetAllMudurlukQueryHandler : IRequestHandler<GetAllMudurlukQueryRequest, GetAllMudurlukQueryResponse>
     {

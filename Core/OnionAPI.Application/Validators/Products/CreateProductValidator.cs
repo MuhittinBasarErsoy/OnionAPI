@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using OnionAPI.Application.DTOs;
-using OnionAPI.Application.Features.Commands.CreateProduct;
+using OnionAPI.Application.Features.Commands.Product.CreateProduct;
 using System;
 using System.Collections.Generic;
 using System.Linq;

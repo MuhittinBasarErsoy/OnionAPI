@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using OnionAPI.Domain.Entities;
+using OnionAPI.Domain.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OnionAPI.Persistence.Contexts
 {
-    public class OnionAPIDbContext : DbContext
+    public class OnionAPIDbContext : IdentityDbContext<AppUser,AppRole,string>
     {
         public OnionAPIDbContext(DbContextOptions options) : base(options)
         {
