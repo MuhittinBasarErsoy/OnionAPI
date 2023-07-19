@@ -12,7 +12,7 @@ using OnionAPI.Persistence.Contexts;
 namespace OnionAPI.Persistence.Migrations
 {
     [DbContext(typeof(OnionAPIDbContext))]
-    [Migration("20230714115329_mig1")]
+    [Migration("20230719104203_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -275,9 +275,9 @@ namespace OnionAPI.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ca3553a6-72c7-4b07-97e6-1faa3dea5787"),
+                            Id = new Guid("e56a6df1-a593-410e-8e63-4881babbef95"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3018),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4314),
                             Enlem = "",
                             MudurlukAdi = "BALIKESİR",
                             MudurlukBolgeKodu = 0,
@@ -285,9 +285,9 @@ namespace OnionAPI.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ef9b4222-1e98-41aa-b25e-4ee4d7b55376"),
+                            Id = new Guid("f069a5ab-b8a2-43e3-9e97-4ba82a404ebf"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3029),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4327),
                             Enlem = "",
                             MudurlukAdi = "EDREMİT",
                             MudurlukBolgeKodu = 0,
@@ -295,9 +295,9 @@ namespace OnionAPI.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("481c955b-c366-4794-b976-23d91d3d86b2"),
+                            Id = new Guid("470ba793-b22b-4954-83a7-8e1d723c2aca"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3031),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4329),
                             Enlem = "",
                             MudurlukAdi = "BANDIRMA",
                             MudurlukBolgeKodu = 0,
@@ -305,9 +305,9 @@ namespace OnionAPI.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("97da8941-ed81-4206-b4e4-1139c79f2399"),
+                            Id = new Guid("d3bdd077-caae-4447-bb0e-cf2f2cd60456"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3042),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4331),
                             Enlem = "",
                             MudurlukAdi = "ÇANAKKALE",
                             MudurlukBolgeKodu = 0,
@@ -315,9 +315,9 @@ namespace OnionAPI.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4d6746a7-89cf-4239-ac87-bda3e2f2a530"),
+                            Id = new Guid("008944b7-54ef-46f1-9747-d4fff4ba6092"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3044),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4333),
                             Enlem = "",
                             MudurlukAdi = "BİGA",
                             MudurlukBolgeKodu = 0,
@@ -325,9 +325,9 @@ namespace OnionAPI.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("30c3be1a-4ea4-4389-b7e4-8a8775c8a0e6"),
+                            Id = new Guid("dc34c73a-2142-45c2-8a64-8969a5bf4425"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3045),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4335),
                             Enlem = "",
                             MudurlukAdi = "YALOVA",
                             MudurlukBolgeKodu = 0,
@@ -335,9 +335,9 @@ namespace OnionAPI.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0e3ec415-db8a-4c48-b4e8-8316e2274793"),
+                            Id = new Guid("3eb10d3e-b1fb-4b99-a81d-4cb433162ec2"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3047),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4337),
                             Enlem = "",
                             MudurlukAdi = "OSMANGAZİ",
                             MudurlukBolgeKodu = 0,
@@ -345,9 +345,9 @@ namespace OnionAPI.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c85c3e3c-c92b-4a08-aed7-9e61e0e20e55"),
+                            Id = new Guid("09a2ec0c-40ca-4079-9f05-3559f839fc01"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3048),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4345),
                             Enlem = "",
                             MudurlukAdi = "GEMLİK",
                             MudurlukBolgeKodu = 0,
@@ -355,9 +355,9 @@ namespace OnionAPI.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("089352de-7d9b-43e7-b2a3-5c3080ae6906"),
+                            Id = new Guid("e1a4d846-d50a-46f4-aca6-e55d9c39e311"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3050),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4347),
                             Enlem = "",
                             MudurlukAdi = "İNEGÖL",
                             MudurlukBolgeKodu = 0,
@@ -365,9 +365,9 @@ namespace OnionAPI.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5a0661fc-362b-45ef-b57b-ad96eacdb8cc"),
+                            Id = new Guid("987e9a29-0623-40bb-8e05-7e77dc11cb3b"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3052),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4349),
                             Enlem = "",
                             MudurlukAdi = "M.KEMALPAŞA",
                             MudurlukBolgeKodu = 0,
@@ -375,9 +375,9 @@ namespace OnionAPI.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("43ea8fd7-75c7-4a79-b3c0-d65bb133a3f8"),
+                            Id = new Guid("9962a79a-c29e-40e2-83a3-e18827f4033d"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3053),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4350),
                             Enlem = "",
                             MudurlukAdi = "NİLÜFER",
                             MudurlukBolgeKodu = 0,
@@ -385,9 +385,9 @@ namespace OnionAPI.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("58884325-de0e-4e83-a126-9de638521d0e"),
+                            Id = new Guid("ea204ea7-0cc8-4538-b752-18dbb4eb5533"),
                             Boylam = "",
-                            CreatedDate = new DateTime(2023, 7, 14, 14, 53, 29, 436, DateTimeKind.Local).AddTicks(3057),
+                            CreatedDate = new DateTime(2023, 7, 19, 13, 42, 3, 202, DateTimeKind.Local).AddTicks(4352),
                             Enlem = "",
                             MudurlukAdi = "YILDIRIM",
                             MudurlukBolgeKodu = 0,
